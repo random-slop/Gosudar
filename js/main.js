@@ -3,11 +3,12 @@
     const counter = document.getElementById("counter");
     const btnNext = document.getElementById("btn-next");
     const btnPrev = document.getElementById("btn-prev");
+    const slider = document.getElementById("slider");
 
     // Progress bar
     const progressBar = document.createElement("div");
     progressBar.className = "progress-bar";
-    document.getElementById("slider").appendChild(progressBar);
+    slider.appendChild(progressBar);
 
     let current = 0;
     let isAnimating = false;
@@ -62,7 +63,6 @@
 
     // Touch/swipe
     let touchStartX = 0;
-    const slider = document.getElementById("slider");
 
     slider.addEventListener("touchstart", (e) => {
         touchStartX = e.touches[0].clientX;
