@@ -1,0 +1,232 @@
+:root {
+    --primary: #4ecca3;
+    --bg: #0f172a;
+    --glass: rgba(255, 255, 255, 0.05);
+    --text: #f8fafc;
+    --radius-card: 24px;
+    --radius-img: 20px;
+    --transition-speed: 0.45s;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* ── Slider ─────────────────────────────────────────── */
+
+.slider-container {
+    position: relative;
+    width: 90%;
+    max-width: 1100px;
+    height: 80vh;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    display: flex;
+}
+
+/* ── Slides ─────────────────────────────────────────── */
+
+.slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+    padding: 60px;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.slide.active {
+    display: grid;
+    animation: slideIn var(--transition-speed) ease-out;
+}
+
+.slide.leaving {
+    animation: slideOut var(--transition-speed) ease-in forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-24px);
+    }
+}
+
+/* ── Content ────────────────────────────────────────── */
+
+.content h1 {
+    font-size: clamp(1.8rem, 3vw, 3rem);
+    margin: 0 0 20px;
+    color: var(--primary);
+    line-height: 1.1;
+}
+
+.content h2 {
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+    color: var(--primary);
+    margin: 0 0 15px;
+}
+
+.content p {
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.content li {
+    position: relative;
+    margin-bottom: 14px;
+    padding-left: 26px;
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    line-height: 1.5;
+}
+
+.content li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}
+
+/* ── Visual ─────────────────────────────────────────── */
+
+.visual {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visual img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius-img);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.4s ease;
+}
+
+.visual img:hover {
+    transform: scale(1.02);
+}
+
+/* ── Controls ───────────────────────────────────────── */
+
+.controls {
+    position: absolute;
+    bottom: 28px;
+    right: 60px;
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+button {
+    background: var(--primary);
+    border: none;
+    color: var(--bg);
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    user-select: none;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(78, 204, 163, 0.45);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.counter {
+    position: absolute;
+    bottom: 38px;
+    left: 60px;
+    font-size: 0.85rem;
+    opacity: 0.45;
+    letter-spacing: 2px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── Progress bar ───────────────────────────────────── */
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--primary);
+    transition: width var(--transition-speed) ease;
+    border-radius: 0 2px 0 0;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+
+@media (max-width: 900px) {
+    .slide {
+        grid-template-columns: 1fr;
+        padding: 32px 28px 80px;
+    }
+
+    .visual {
+        display: none;
+    }
+
+    .controls {
+        right: 28px;
+    }
+
+    .counter {
+        left: 28px;
+    }
+}
