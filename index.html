@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чукотка: Край, где рождается день</title>
+    <style>
+        :root {
+            --primary: #4ecca3;
+            --bg: #0f172a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --text: #f8fafc;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .slider-container {
+            width: 90%;
+            max-width: 1100px;
+            height: 80vh;
+            position: relative;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            padding: 60px;
+            box-sizing: border-box;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            animation: slideIn 0.6s ease-out;
+        }
+        .slide.active { display: grid; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .content h1 { font-size: 3rem; margin-bottom: 20px; color: var(--primary); line-height: 1.1; }
+        .content h2 { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+        .content p { font-size: 1.2rem; opacity: 0.9; line-height: 1.6; }
+        .content ul { list-style: none; padding: 0; }
+        .content li { margin-bottom: 12px; padding-left: 25px; position: relative; font-size: 1.1rem; }
+        .content li::before { content: "✦"; position: absolute; left: 0; color: var(--primary); }
+        
+        .visual { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
+        .visual img { 
+            width: 100%; 
+            height: 400px; 
+            object-fit: cover; 
+            border-radius: 20px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .controls { position: absolute; bottom: 30px; right: 60px; display: flex; gap: 15px; z-index: 10; }
+        button {
+            background: var(--primary);
+            border: none;
+            color: var(--bg);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(78, 204, 163, 0.4); }
+        .counter { position: absolute; bottom: 35px; left: 60px; font-size: 0.9rem; opacity: 0.5; letter-spacing: 2px; }
+        
+        @media (max-width: 900px) {
+            .slide { grid-template-columns: 1fr; padding: 30px; }
+            .visual { display: none; }
+            .content h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider-container">
+    <div class="slide active">
+        <div class="content">
+            <h1>Чукотка: Край, где рождается день</h1>
+            <p>Путешествие на северо-восточную окраину России, где встречаются полушария и океаны.</p>
+            <p><strong>Авторы:</strong> Команда исследователей Арктики</p>
+        </div>
+        <div class="visual">
+            <img src="1_2.jpg" alt="Пейзаж Чукотки">
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="content">
+            <h2>География и климат</h2>
+            <ul>
+                <li>Единственный регион в двух полушариях (Восточное и Западное).</li>
+                <li>Граница с США — всего 4 км в Беринговом проливе.</li>
+                <li>Штормовой ветер «Южак» и зима 10 месяцев в году.</li>
+            </ul>
+        </div>
+        <div class="visual">
+            <img src="2.jpg" alt="Природа Анадыря" style="object-fit: contain; height: auto; max-height: 400px;">
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="content">
+            <h2>Жизнь на сваях</h2>
+            <ul>
+                <li>Дома строят на сваях, чтобы тепло зданий не растопило вечную мерзлоту.</li>
+                <li>Яркие фасады Анадыря — психологическая защита от долгой белой зимы.</li>
+            </ul>
+        </div>
+        <div class="visual">
+            <img src="3.jpg" alt="Цветные дома Анадыря">
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="content">
+            <h2>Еда и Энергия</h2>
+            <ul>
+                <li>Основа рациона: мясо оленя и морского зверя (высокая калорийность).</li>
+                <li>«Северный завоз»: продукты завозят летом по морю на год вперед.</li>
+                <li>Экстремальные цены на овощи и фрукты.</li>
+            </ul>
+        </div>
+        <div class="visual">
+            <img src="4.jpg" alt="Традиционный промысел">
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="content">
+            <h2>Яранга и Кухлянка</h2>
+            <ul>
+                <li><strong>Яранга:</strong> передвижной дом из шкур оленей.</li>
+                <li><strong>Полог:</strong> внутренняя «комната», где тепло даже в -50°C.</li>
+                <li><strong>Кухлянка:</strong> двойная меховая одежда, в которой спят на снегу.</li>
+            </ul>
+        </div>
+        <div class="visual">
+            <img src="5.jpg" alt="Яранга в тундре">
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="content">
+            <h2>Культура Духов</h2>
+            <ul>
+                <li>Вера в духов природы и шаманизм.</li>
+                <li>Традиционный китобойный промысел (разрешен для выживания).</li>
+                <li>Резьба по моржовому клыку — искусство мирового уровня.</li>
+            </ul>
+        </div>
+        <div class="visual">
+            <img src="6.jpg" alt="Чукотская культура">
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="content">
+            <h2>Работа и Транспорт</h2>
+            <ul>
+                <li>Добыча золота, серебра и угля — костяк экономики.</li>
+                <li>Внедорожники «Трэкол» и вертолеты — вместо привычных дорог.</li>
+                <li>Оленеводство как образ жизни тысяч людей.</li>
+            </ul>
+        </div>
+        <div class="visual">
+            <img src="7.jpg" alt="Транспорт Чукотки">
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="content">
+            <h1>Спасибо за внимание!</h1>
+            <p>Чукотка — это место, где понимаешь истинную ценность человеческого тепла.</p>
+            <p>Ждем ваших вопросов!</p>
+        </div>
+        <div class="visual">
+            <img src="8.jpg" alt="Северное сияние">
+        </div>
+    </div>
+
+    <div class="counter" id="counter">01 / 08</div>
+    <div class="controls">
+        <button onclick="prev()">Назад</button>
+        <button onclick="next()">Вперед</button>
+    </div>
+</div>
+
+<script>
+    let idx = 0;
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('counter');
+
+    function update() {
+        slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+        counter.innerText = `${String(idx + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+    }
+
+    function next() { idx = (idx + 1) % slides.length; update(); }
+    function prev() { idx = (idx - 1 + slides.length) % slides.length; update(); }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') next();
+        if (e.key === 'ArrowLeft') prev();
+    });
+</script>
+
+</body>
+</html>
